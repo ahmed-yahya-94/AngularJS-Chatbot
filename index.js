@@ -58,3 +58,8 @@ app.use("/mongo/logs", logsRouter) // add the .../logs
 //STEP 6 Create a user router
 const userRouter = require("./api/routes/userRoute")
 app.use("/mongo/user", userRouter) 
+
+const loginCheck = require("./api/routes/loginRoute");
+
+// add loginCheck after the "/"
+app.use("/", loginCheck , watsonRouter);
