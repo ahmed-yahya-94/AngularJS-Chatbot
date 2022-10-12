@@ -1,14 +1,21 @@
-#Change dir name for app to chat
-#Change all files under app to chat
-#fix imports
+# Step 1
+# Change dir name for `app` to `chat`
+# Change all files under `app` to `chat`
+# Fix imports
 
-#create dir app under components
-#create app.compoment.css 
-#create app.compoment.html
-#insert <router-outlet></router-outlet>
-#create app.compoment.ts
+# Step 2
+# Create dir `app` under `.chat-ui/src/components`
+# Create `app.compoment.css` leave it empty
 
-#insert
+# Create `app.compoment.html`
+# Insert 
+```
+<router-outlet></router-outlet>
+```
+
+# Create app.compoment.ts
+# insert
+```
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -24,11 +31,14 @@ export class AppComponent implements OnInit {
   }
 
 }
+```
+# Step 3
+# In `./chat-ui`
+# run `ng generate interceptor oauth`
+# run `npm i ngx-cookie-service@13.2.1`
+# update oauth.interceptor.ts
 
-#run ng generate interceptor oauth
-#run npm i ngx-cookie-service@13.2.1
-#update oauth.interceptor.ts
-
+```
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -51,10 +61,12 @@ export class OAuthInterceptor implements CanActivate {
     return false;
   }
 }
+```
 
-#Navigate to chat.component.ts
-#change
-this.chatService.user = prompt('what's your name) to 
-this.chatService.user = JSON.parse(this.cookieService.get('chatbotUser')).firstName;
+# Step 4
+# Navigate to `chat-ui/components/chat.component.ts`
+# change
+`this.chatService.user = prompt('what's your name)` > `this.chatService.user = JSON.parse(this.cookieService.get('chatbotUser')).firstName;`
+
 
 
