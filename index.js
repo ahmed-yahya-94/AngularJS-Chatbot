@@ -47,6 +47,10 @@ app.get("/", (req, res) =>
 // Go to Watson Docs URL in WhatsApp 
 // Copy assitant Authentication Initialization
 
+const loginController = require("./api/controllers/loginController")
+// add loginCheck after the "/"
+app.post("/login", loginController);
+
 const watsonRouter = require("./api/routes/watsonRoutes");
 app.use("/", watsonRouter);
 
@@ -59,7 +63,3 @@ app.use("/mongo/logs", logsRouter) // add the .../logs
 const userRouter = require("./api/routes/userRoute")
 app.use("/mongo/user", userRouter) 
 
-const loginCheck = require("./api/routes/loginRoute");
-
-// add loginCheck after the "/"
-app.use("/", loginCheck , watsonRouter);
