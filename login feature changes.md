@@ -70,6 +70,7 @@ export class OAuthInterceptor implements CanActivate {
 
 # step 5
 # login.component.ts
+```
   login(){
     this.loginService.setUserData(this.form.getRawValue());
     axios.post('http://localhost:3000/login', {
@@ -85,5 +86,5 @@ export class OAuthInterceptor implements CanActivate {
       console.log('Error:', err)
     })
   }
-}
+  ```
 
