@@ -68,5 +68,22 @@ export class OAuthInterceptor implements CanActivate {
 # change
 `this.chatService.user = prompt('what's your name)` > `this.chatService.user = JSON.parse(this.cookieService.get('chatbotUser')).firstName;`
 
-
+# step 5
+# login.component.ts
+  login(){
+    this.loginService.setUserData(this.form.getRawValue());
+    axios.post('http://localhost:3000/login', {
+      email: this.email,
+      password: this.password
+    }).then( res => {
+      if(res.status === 200){
+        this.cookieService.set('chatbotUser', JSON.stringify(res.data))
+        this.form.reset()
+        this.router.navigate([''])
+      }
+    }).catch(err => {
+      console.log('Error:', err)
+    })
+  }
+}
 
